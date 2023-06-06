@@ -1,4 +1,5 @@
 ﻿using BioHimicHospital.Model;
+using BioHimicHospital.View.Pages.MainWindowPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,38 @@ namespace BioHimicHospital.View.Pages
                         }
                         else
                         {
-                            this.NavigationService.Navigate(new MainWindowPage(authUser));
+                            var userLaborant = db.context.LaboratoryAssistants.Where(
+                            x => x.Login == authUser.Login
+                            ).FirstOrDefault();
+
+                            var userAdmin = db.context.Adminstration.Where(
+                            x => x.Login == authUser.Login
+                            ).FirstOrDefault();
+
+                            var userPatient = db.context.Patients.Where(
+                            x => x.Login == authUser.Login
+                            ).FirstOrDefault();
+
+                            var userAccountant = db.context.Accountants.Where(
+                            x => x.Login == authUser.Login
+                            ).FirstOrDefault();
+
+                            if (userLaborant != null)
+                            {
+                                this.NavigationService.Navigate(new MainWindowLaboratoryAssistant());
+                            }
+                            if (userAdmin != null)
+                            {
+                                this.NavigationService.Navigate(new MainWindowAdminstartion());
+                            }
+                            if (userPatient != null)
+                            {
+                                this.NavigationService.Navigate(new MainWindowPatient());
+                            }
+                            if (userAccountant != null)
+                            {
+                                this.NavigationService.Navigate(new MainWindowAccountant());
+                            }
                         }
                     }
                     catch (Exception ex)

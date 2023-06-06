@@ -19,6 +19,7 @@ namespace BioHimicHospital.Model
         {
             this.LaboratoryAssistants = new HashSet<LaboratoryAssistants>();
             this.Orders = new HashSet<Orders>();
+            this.BiomaterialResearch = new HashSet<BiomaterialResearch>();
         }
     
         public int IdLaboratoryService { get; set; }
@@ -29,5 +30,7 @@ namespace BioHimicHospital.Model
         public virtual ICollection<LaboratoryAssistants> LaboratoryAssistants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BiomaterialResearch> BiomaterialResearch { get; set; }
     }
 }

@@ -24,6 +24,9 @@
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Patients_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Patients_Users" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Adminstration_Users" />
+        <EntityTypeShape EntityType="ProjectHospitalDBModel.BiomaterialResearch" Width="1.5" PointX="5.25" PointY="11.5" />
+        <AssociationConnector Association="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" />
+        <AssociationConnector Association="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

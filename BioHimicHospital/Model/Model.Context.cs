@@ -37,6 +37,7 @@ namespace BioHimicHospital.Model
         public virtual DbSet<Patients> Patients { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<BiomaterialResearch> BiomaterialResearch { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

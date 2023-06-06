@@ -39,7 +39,7 @@
 
                 <TextBlock Text="УСЛУГА:" Style="{StaticResource MainTextBlock}" />
 
-                <ComboBox Padding="10"
+                <ComboBox x:Name="LaboratoryServicesComboBox" Padding="10"
                      Margin="1 10 0 10"/>
 
                 <TextBlock Text="ЛОГИН:" Style="{StaticResource MainTextBlock}" />
@@ -76,7 +76,8 @@
                     Content="Зарегистрироваться" 
                     Click="RegButton_Click"
                     Height="40"/>
-
+            
+            
         </StackPanel>
     </Grid>
 </Page>

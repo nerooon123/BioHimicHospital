@@ -34,6 +34,15 @@
           <Property Name="IdAdminstration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="BiomaterialResearch">
+          <Key>
+            <PropertyRef Name="IdBiomaterialResearch" />
+          </Key>
+          <Property Name="IdBiomaterialResearch" Type="int" Nullable="false" />
+          <Property Name="IdPatient" Type="int" Nullable="false" />
+          <Property Name="IdLaboraotryService" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="InsuranceCompany">
           <Key>
             <PropertyRef Name="IdInsuranceCompany" />
@@ -85,8 +94,8 @@
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirthday" Type="date" Nullable="false" />
           <Property Name="SeriesAndNumberPassport" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="NumberPhone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PolicyNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdInsuranceCompany" Type="int" Nullable="false" />
           <Property Name="IdOrder" Type="int" />
@@ -142,6 +151,30 @@
             </Principal>
             <Dependent Role="Adminstration">
               <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiomaterialResearch_LaboratoryServices">
+          <End Role="LaboratoryServices" Type="Self.LaboratoryServices" Multiplicity="1" />
+          <End Role="BiomaterialResearch" Type="Self.BiomaterialResearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryServices">
+              <PropertyRef Name="IdLaboratoryService" />
+            </Principal>
+            <Dependent Role="BiomaterialResearch">
+              <PropertyRef Name="IdLaboraotryService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiomaterialResearch_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="BiomaterialResearch" Type="Self.BiomaterialResearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="BiomaterialResearch">
+              <PropertyRef Name="IdPatient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -252,6 +285,7 @@
           <EntitySet Name="Accountants" EntityType="Self.Accountants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountantServices" EntityType="Self.AccountantServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Adminstration" EntityType="Self.Adminstration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BiomaterialResearch" EntityType="Self.BiomaterialResearch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryAssistants" EntityType="Self.LaboratoryAssistants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryServices" EntityType="Self.LaboratoryServices" Schema="dbo" store:Type="Tables" />
@@ -270,6 +304,14 @@
           <AssociationSet Name="FK_Adminstration_Users" Association="Self.FK_Adminstration_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Adminstration" EntitySet="Adminstration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiomaterialResearch_LaboratoryServices" Association="Self.FK_BiomaterialResearch_LaboratoryServices">
+            <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiomaterialResearch_Patients" Association="Self.FK_BiomaterialResearch_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
           </AssociationSet>
           <AssociationSet Name="FK_LaboratoryAssistants_LaboratoryServices" Association="Self.FK_LaboratoryAssistants_LaboratoryServices">
             <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
@@ -368,6 +410,7 @@
           <Property Name="PeriodOfExecution" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LaboratoryAssistants" Relationship="Self.FK_LaboratoryAssistants_LaboratoryServices" FromRole="LaboratoryServices" ToRole="LaboratoryAssistants" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_LaboratoryServices" FromRole="LaboratoryServices" ToRole="Orders" />
+          <NavigationProperty Name="BiomaterialResearch" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" FromRole="LaboratoryServices" ToRole="BiomaterialResearch" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -391,8 +434,8 @@
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SeriesAndNumberPassport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NumberPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PolicyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdInsuranceCompany" Type="Int32" Nullable="false" />
           <Property Name="IdOrder" Type="Int32" />
@@ -400,6 +443,7 @@
           <NavigationProperty Name="InsuranceCompany" Relationship="Self.FK_Patients_InsuranceCompany" FromRole="Patients" ToRole="InsuranceCompany" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Patients_Orders" FromRole="Patients" ToRole="Orders" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Patients_Users" FromRole="Patients" ToRole="Users" />
+          <NavigationProperty Name="BiomaterialResearch" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" FromRole="Patients" ToRole="BiomaterialResearch" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -595,6 +639,15 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Adminstration" EntitySet="Adminstration" />
           </AssociationSet>
+          <EntitySet Name="BiomaterialResearch" EntityType="ProjectHospitalDBModel.BiomaterialResearch" />
+          <AssociationSet Name="FK_BiomaterialResearch_LaboratoryServices" Association="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices">
+            <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiomaterialResearch_Patients" Association="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -616,6 +669,41 @@
             </Principal>
             <Dependent Role="Adminstration">
               <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BiomaterialResearch">
+          <Key>
+            <PropertyRef Name="IdBiomaterialResearch" />
+          </Key>
+          <Property Name="IdBiomaterialResearch" Type="Int32" Nullable="false" />
+          <Property Name="IdPatient" Type="Int32" Nullable="false" />
+          <Property Name="IdLaboraotryService" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LaboratoryServices" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" FromRole="BiomaterialResearch" ToRole="LaboratoryServices" />
+          <NavigationProperty Name="Patients" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" FromRole="BiomaterialResearch" ToRole="Patients" />
+        </EntityType>
+        <Association Name="FK_BiomaterialResearch_LaboratoryServices">
+          <End Type="ProjectHospitalDBModel.LaboratoryServices" Role="LaboratoryServices" Multiplicity="1" />
+          <End Type="ProjectHospitalDBModel.BiomaterialResearch" Role="BiomaterialResearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryServices">
+              <PropertyRef Name="IdLaboratoryService" />
+            </Principal>
+            <Dependent Role="BiomaterialResearch">
+              <PropertyRef Name="IdLaboraotryService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiomaterialResearch_Patients">
+          <End Type="ProjectHospitalDBModel.Patients" Role="Patients" Multiplicity="1" />
+          <End Type="ProjectHospitalDBModel.BiomaterialResearch" Role="BiomaterialResearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="BiomaterialResearch">
+              <PropertyRef Name="IdPatient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -763,6 +851,16 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище ProjectHospitalDBModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище ProjectHospitalDBModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="BiomaterialResearch">
+            <EntityTypeMapping TypeName="ProjectHospitalDBModel.BiomaterialResearch">
+              <MappingFragment StoreEntitySet="BiomaterialResearch">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="IdLaboraotryService" ColumnName="IdLaboraotryService" />
+                <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+                <ScalarProperty Name="IdBiomaterialResearch" ColumnName="IdBiomaterialResearch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

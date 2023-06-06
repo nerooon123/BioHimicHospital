@@ -64,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AccountantsController.cs" />
+    <Compile Include="Controllers\AdminstrationController.cs" />
+    <Compile Include="Controllers\LaboratoryAssistant.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Model\Accountants.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -71,6 +75,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Adminstration.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BiomaterialResearch.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Core.cs" />
@@ -119,8 +126,17 @@
     <Compile Include="View\Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\MainWindowPage.xaml.cs">
-      <DependentUpon>MainWindowPage.xaml</DependentUpon>
+    <Compile Include="View\Pages\MainWindowPages\MainWindowAccountant.xaml.cs">
+      <DependentUpon>MainWindowAccountant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\MainWindowPages\MainWindowAdminstartion.xaml.cs">
+      <DependentUpon>MainWindowAdminstartion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\MainWindowPages\MainWindowLaboratoryAssistant.xaml.cs">
+      <DependentUpon>MainWindowLaboratoryAssistant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\MainWindowPages\MainWindowPatient.xaml.cs">
+      <DependentUpon>MainWindowPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\RegistationPages\AccountantRegistrationPage.xaml.cs">
       <DependentUpon>AccountantRegistrationPage.xaml</DependentUpon>
@@ -150,7 +166,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\MainWindowPage.xaml">
+    <Page Include="View\Pages\MainWindowPages\MainWindowAccountant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\MainWindowPages\MainWindowAdminstartion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\MainWindowPages\MainWindowLaboratoryAssistant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\MainWindowPages\MainWindowPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,7 +246,6 @@
     <Resource Include="Assets\Images\log-out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Dictionaries\" />
     <Folder Include="ViewModel\" />
     <Folder Include="View\Windows\" />
   </ItemGroup>

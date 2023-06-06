@@ -5,10 +5,111 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BioHimicHospital.View.Pages.RegistationPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="PatientRegistrationPage">
 
     <Grid>
-        
+        <StackPanel  VerticalAlignment="Center" 
+                     HorizontalAlignment="Center" 
+                     Width="600"
+                     >
+
+            <UniformGrid Columns="2">
+
+                <TextBlock Text="ФАМИЛИЯ:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="LastNameTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ИМЯ:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="FirstNameTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ОТЧЕСТВО: (Необязательно)" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="PatronymicTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ДАТА РОЖДЕНИЯ:" Style="{StaticResource MainTextBlock}" />
+
+                <DatePicker x:Name="DateOfBirthdayPicker" VerticalAlignment="Center"/>
+
+                <TextBlock Text="СЕРИЯ И НОМЕР ПАСПОРТА:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="SeriesAndNumberPassportTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="НОМЕР ТЕЛЕФОНА:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="NumberPhoneTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ПОЧТА: " Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="EmailTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ПОЛИС: " Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="PolicyNumberTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="СТРАХОВАЯ КОМПАНИЯ:" Style="{StaticResource MainTextBlock}" />
+
+                <ComboBox x:Name="InsuranceCompanyComboBox" Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ЛОГИН:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="LoginTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ПАРОЛЬ:" Style="{StaticResource MainTextBlock}"/>
+
+                <PasswordBox x:Name="PasswordTextBox" 
+                         Padding="10"
+                         Margin="1 10 0 10">
+
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border x:Name="border" CornerRadius="7" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </PasswordBox.Style>
+                </PasswordBox>
+            </UniformGrid>
+
+            <Button x:Name="RegButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Зарегистрироваться" 
+                    Click="RegButton_Click"
+                    Height="40"/>
+
+
+        </StackPanel>
     </Grid>
 </Page>
