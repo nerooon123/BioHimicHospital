@@ -1,0 +1,89 @@
+﻿<Application x:Class="BioHimicHospital.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BioHimicHospital"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="MainTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextElement.FontFamily" Value="/Assets/Fonts/#Ubuntu" />
+            <Setter Property="TextElement.FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="MainTextBlock" TargetType="TextBlock">
+            <Setter Property="TextElement.FontFamily" Value="/Assets/Fonts/#Ubuntu" />
+            <Setter Property="TextElement.FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextElement.FontSize" Value="20"/>
+        </Style>
+
+        <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
+            <Setter Property="TextElement.FontFamily" Value="/Assets/Fonts/#Ubuntu" />
+            <Setter Property="TextElement.FontWeight" Value="Bold"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="MainLabelStyle" TargetType="Label">
+            <Setter Property="TextElement.FontFamily" Value="/Assets/Fonts/#Ubuntu" />
+            <Setter Property="TextElement.FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="TextElement.FontFamily" Value="/Assets/Fonts/#Ubuntu" />
+            <Setter Property="TextElement.FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+
+            <Setter Property="Background" Value="#0B131B" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.5" TargetName="Border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="LogOut" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>
