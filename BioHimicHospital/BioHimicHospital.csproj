@@ -74,7 +74,10 @@
     <Compile Include="Model\AccountantServices.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Adminstration.cs">
+    <Compile Include="Model\Adminstrations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AnalysisReport.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BiomaterialResearch.cs">
@@ -141,6 +144,9 @@
     <Compile Include="View\Pages\RegistationPages\AccountantRegistrationPage.xaml.cs">
       <DependentUpon>AccountantRegistrationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\RegistationPages\AdminstrationRegistrationPage.xaml.cs">
+      <DependentUpon>AdminstrationRegistrationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\RegistationPages\LabaratoryAssistantRegistrationPage.xaml.cs">
       <DependentUpon>LabaratoryAssistantRegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -149,6 +155,12 @@
     </Compile>
     <Compile Include="View\Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ResourcePages\AnalysisReportPage.xaml.cs">
+      <DependentUpon>AnalysisReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ResourcePages\BiomaterialResearchPage.xaml.cs">
+      <DependentUpon>BiomaterialResearchPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +198,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\RegistationPages\AdminstrationRegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\RegistationPages\LabaratoryAssistantRegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +211,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ResourcePages\AnalysisReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ResourcePages\BiomaterialResearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

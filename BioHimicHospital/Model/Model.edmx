@@ -27,18 +27,31 @@
           <Property Name="NameAccountantService" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="PeriodOfExecution" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Adminstration">
+        <EntityType Name="Adminstrations">
           <Key>
             <PropertyRef Name="IdAdminstration" />
           </Key>
           <Property Name="IdAdminstration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="AnalysisReport">
+          <Key>
+            <PropertyRef Name="IdAnalysisReport" />
+          </Key>
+          <Property Name="IdAnalysisReport" Type="int" Nullable="false" />
+          <Property Name="IdBiomaterialResearch" Type="int" Nullable="false" />
+          <Property Name="BloodGlucoseLevel" Type="nvarchar" MaxLength="250" />
+          <Property Name="CholesterolLevels" Type="nvarchar" MaxLength="250" />
+          <Property Name="ThePresenceOfProteinsInTheUrine" Type="nvarchar" MaxLength="250" />
+          <Property Name="Electrocardiography" Type="image" />
+          <Property Name="UltrasoundExamination" Type="image" />
+          <Property Name="ComputedTomography" Type="image" />
+        </EntityType>
         <EntityType Name="BiomaterialResearch">
           <Key>
             <PropertyRef Name="IdBiomaterialResearch" />
           </Key>
-          <Property Name="IdBiomaterialResearch" Type="int" Nullable="false" />
+          <Property Name="IdBiomaterialResearch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPatient" Type="int" Nullable="false" />
           <Property Name="IdLaboraotryService" Type="int" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
@@ -144,13 +157,25 @@
         </Association>
         <Association Name="FK_Adminstration_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Adminstration" Type="Self.Adminstration" Multiplicity="*" />
+          <End Role="Adminstrations" Type="Self.Adminstrations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="Login" />
             </Principal>
-            <Dependent Role="Adminstration">
+            <Dependent Role="Adminstrations">
               <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnalysisReport_BiomaterialResearch">
+          <End Role="BiomaterialResearch" Type="Self.BiomaterialResearch" Multiplicity="1" />
+          <End Role="AnalysisReport" Type="Self.AnalysisReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BiomaterialResearch">
+              <PropertyRef Name="IdBiomaterialResearch" />
+            </Principal>
+            <Dependent Role="AnalysisReport">
+              <PropertyRef Name="IdBiomaterialResearch" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -284,7 +309,8 @@
         <EntityContainer Name="Хранилище ProjectHospitalDBModelContainer">
           <EntitySet Name="Accountants" EntityType="Self.Accountants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountantServices" EntityType="Self.AccountantServices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Adminstration" EntityType="Self.Adminstration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adminstrations" EntityType="Self.Adminstrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnalysisReport" EntityType="Self.AnalysisReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BiomaterialResearch" EntityType="Self.BiomaterialResearch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryAssistants" EntityType="Self.LaboratoryAssistants" Schema="dbo" store:Type="Tables" />
@@ -303,7 +329,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_Adminstration_Users" Association="Self.FK_Adminstration_Users">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Adminstration" EntitySet="Adminstration" />
+            <End Role="Adminstrations" EntitySet="Adminstrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnalysisReport_BiomaterialResearch" Association="Self.FK_AnalysisReport_BiomaterialResearch">
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+            <End Role="AnalysisReport" EntitySet="AnalysisReport" />
           </AssociationSet>
           <AssociationSet Name="FK_BiomaterialResearch_LaboratoryServices" Association="Self.FK_BiomaterialResearch_LaboratoryServices">
             <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
@@ -366,14 +396,6 @@
           <Property Name="NameAccountantService" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PeriodOfExecution" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Accountants" Relationship="Self.FK_Accountants_AccountantServices" FromRole="AccountantServices" ToRole="Accountants" />
-        </EntityType>
-        <EntityType Name="Adminstration">
-          <Key>
-            <PropertyRef Name="IdAdminstration" />
-          </Key>
-          <Property Name="IdAdminstration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="ProjectHospitalDBModel.FK_Adminstration_Users" FromRole="Adminstration" ToRole="Users" />
         </EntityType>
         <EntityType Name="InsuranceCompany">
           <Key>
@@ -464,7 +486,7 @@
           <NavigationProperty Name="Accountants" Relationship="Self.FK_Accountants_Users" FromRole="Users" ToRole="Accountants" />
           <NavigationProperty Name="LaboratoryAssistants" Relationship="Self.FK_LaboratoryAssistants_Users" FromRole="Users" ToRole="LaboratoryAssistants" />
           <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_Users" FromRole="Users" ToRole="Patients" />
-          <NavigationProperty Name="Adminstration" Relationship="ProjectHospitalDBModel.FK_Adminstration_Users" FromRole="Users" ToRole="Adminstration" />
+          <NavigationProperty Name="Adminstrations" Relationship="ProjectHospitalDBModel.FK_Adminstration_Users1" FromRole="Users" ToRole="Adminstrations" />
         </EntityType>
         <Association Name="FK_Accountants_AccountantServices">
           <End Role="AccountantServices" Type="Self.AccountantServices" Multiplicity="1" />
@@ -565,7 +587,6 @@
         <EntityContainer Name="ProjectHospitalDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accountants" EntityType="Self.Accountants" />
           <EntitySet Name="AccountantServices" EntityType="Self.AccountantServices" />
-          <EntitySet Name="Adminstration" EntityType="Self.Adminstration" />
           <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" />
           <EntitySet Name="LaboratoryAssistants" EntityType="Self.LaboratoryAssistants" />
           <EntitySet Name="LaboratoryServices" EntityType="Self.LaboratoryServices" />
@@ -635,10 +656,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_Adminstration_Users" Association="ProjectHospitalDBModel.FK_Adminstration_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Adminstration" EntitySet="Adminstration" />
-          </AssociationSet>
           <EntitySet Name="BiomaterialResearch" EntityType="ProjectHospitalDBModel.BiomaterialResearch" />
           <AssociationSet Name="FK_BiomaterialResearch_LaboratoryServices" Association="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices">
             <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
@@ -647,6 +664,16 @@
           <AssociationSet Name="FK_BiomaterialResearch_Patients" Association="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+          </AssociationSet>
+          <EntitySet Name="Adminstrations" EntityType="ProjectHospitalDBModel.Adminstrations" />
+          <EntitySet Name="AnalysisReport" EntityType="ProjectHospitalDBModel.AnalysisReport" />
+          <AssociationSet Name="FK_Adminstration_Users1" Association="ProjectHospitalDBModel.FK_Adminstration_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Adminstrations" EntitySet="Adminstrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnalysisReport_BiomaterialResearch" Association="ProjectHospitalDBModel.FK_AnalysisReport_BiomaterialResearch">
+            <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
+            <End Role="AnalysisReport" EntitySet="AnalysisReport" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -660,18 +687,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_Adminstration_Users">
-          <End Type="ProjectHospitalDBModel.Users" Role="Users" Multiplicity="1" />
-          <End Type="ProjectHospitalDBModel.Adminstration" Role="Adminstration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Login" />
-            </Principal>
-            <Dependent Role="Adminstration">
-              <PropertyRef Name="Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="BiomaterialResearch">
           <Key>
             <PropertyRef Name="IdBiomaterialResearch" />
@@ -682,6 +697,7 @@
           <Property Name="Cost" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LaboratoryServices" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" FromRole="BiomaterialResearch" ToRole="LaboratoryServices" />
           <NavigationProperty Name="Patients" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" FromRole="BiomaterialResearch" ToRole="Patients" />
+          <NavigationProperty Name="AnalysisReport" Relationship="ProjectHospitalDBModel.FK_AnalysisReport_BiomaterialResearch" FromRole="BiomaterialResearch" ToRole="AnalysisReport" />
         </EntityType>
         <Association Name="FK_BiomaterialResearch_LaboratoryServices">
           <End Type="ProjectHospitalDBModel.LaboratoryServices" Role="LaboratoryServices" Multiplicity="1" />
@@ -704,6 +720,52 @@
             </Principal>
             <Dependent Role="BiomaterialResearch">
               <PropertyRef Name="IdPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adminstrations">
+          <Key>
+            <PropertyRef Name="IdAdminstration" />
+          </Key>
+          <Property Name="IdAdminstration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="ProjectHospitalDBModel.FK_Adminstration_Users1" FromRole="Adminstrations" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="AnalysisReport">
+          <Key>
+            <PropertyRef Name="IdAnalysisReport" />
+          </Key>
+          <Property Name="IdAnalysisReport" Type="Int32" Nullable="false" />
+          <Property Name="IdBiomaterialResearch" Type="Int32" Nullable="false" />
+          <Property Name="BloodGlucoseLevel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CholesterolLevels" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ThePresenceOfProteinsInTheUrine" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Electrocardiography" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UltrasoundExamination" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ComputedTomography" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="BiomaterialResearch" Relationship="ProjectHospitalDBModel.FK_AnalysisReport_BiomaterialResearch" FromRole="AnalysisReport" ToRole="BiomaterialResearch" />
+        </EntityType>
+        <Association Name="FK_Adminstration_Users1">
+          <End Type="ProjectHospitalDBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="ProjectHospitalDBModel.Adminstrations" Role="Adminstrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Adminstrations">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnalysisReport_BiomaterialResearch">
+          <End Type="ProjectHospitalDBModel.BiomaterialResearch" Role="BiomaterialResearch" Multiplicity="1" />
+          <End Type="ProjectHospitalDBModel.AnalysisReport" Role="AnalysisReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BiomaterialResearch">
+              <PropertyRef Name="IdBiomaterialResearch" />
+            </Principal>
+            <Dependent Role="AnalysisReport">
+              <PropertyRef Name="IdBiomaterialResearch" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -734,14 +796,6 @@
                 <ScalarProperty Name="IdAccountantService" ColumnName="IdAccountantService" />
                 <ScalarProperty Name="NameAccountantService" ColumnName="NameAccountantService" />
                 <ScalarProperty Name="PeriodOfExecution" ColumnName="PeriodOfExecution" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Adminstration">
-            <EntityTypeMapping TypeName="ProjectHospitalDBModel.Adminstration">
-              <MappingFragment StoreEntitySet="Adminstration">
-                <ScalarProperty Name="IdAdminstration" ColumnName="IdAdminstration" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -858,6 +912,28 @@
                 <ScalarProperty Name="IdLaboraotryService" ColumnName="IdLaboraotryService" />
                 <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
                 <ScalarProperty Name="IdBiomaterialResearch" ColumnName="IdBiomaterialResearch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adminstrations">
+            <EntityTypeMapping TypeName="ProjectHospitalDBModel.Adminstrations">
+              <MappingFragment StoreEntitySet="Adminstrations">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="IdAdminstration" ColumnName="IdAdminstration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnalysisReport">
+            <EntityTypeMapping TypeName="ProjectHospitalDBModel.AnalysisReport">
+              <MappingFragment StoreEntitySet="AnalysisReport">
+                <ScalarProperty Name="ComputedTomography" ColumnName="ComputedTomography" />
+                <ScalarProperty Name="UltrasoundExamination" ColumnName="UltrasoundExamination" />
+                <ScalarProperty Name="Electrocardiography" ColumnName="Electrocardiography" />
+                <ScalarProperty Name="ThePresenceOfProteinsInTheUrine" ColumnName="ThePresenceOfProteinsInTheUrine" />
+                <ScalarProperty Name="CholesterolLevels" ColumnName="CholesterolLevels" />
+                <ScalarProperty Name="BloodGlucoseLevel" ColumnName="BloodGlucoseLevel" />
+                <ScalarProperty Name="IdBiomaterialResearch" ColumnName="IdBiomaterialResearch" />
+                <ScalarProperty Name="IdAnalysisReport" ColumnName="IdAnalysisReport" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

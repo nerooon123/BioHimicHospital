@@ -9,6 +9,27 @@
       Title="MainWindowLaboratoryAssistant">
 
     <Grid>
-        <TextBlock Text="Laborant"/>
+        <StackPanel  VerticalAlignment="Center" 
+                     HorizontalAlignment="Center"
+                     >
+
+            <UniformGrid Columns="2">
+                <Button x:Name="Analysis" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Анализы" Click="AnalysisButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                <Button x:Name="BiomaterialResearch" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Исследование биоматериалов" Click="BiomaterialResearchButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+            </UniformGrid>
+
+        </StackPanel>
     </Grid>
 </Page>

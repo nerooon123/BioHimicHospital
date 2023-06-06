@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BioHimicHospital.Model;
+using BioHimicHospital.View.Pages.ResourcePages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,16 @@ namespace BioHimicHospital.View.Pages.MainWindowPages
         public MainWindowLaboratoryAssistant()
         {
             InitializeComponent();
+        }
+
+        private void AnalysisButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AnalysisReportPage());
+        }
+
+        private void BiomaterialResearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new BiomaterialResearchPage());
         }
     }
 }

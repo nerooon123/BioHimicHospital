@@ -7,7 +7,6 @@
       <Diagram DiagramId="0d0aec296f1344d587b59887819d0547" Name="Diagram1">
         <EntityTypeShape EntityType="ProjectHospitalDBModel.Accountants" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectHospitalDBModel.AccountantServices" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectHospitalDBModel.Adminstration" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectHospitalDBModel.InsuranceCompany" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectHospitalDBModel.LaboratoryAssistants" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectHospitalDBModel.LaboratoryServices" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
@@ -23,10 +22,13 @@
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Orders_LaboratoryServices" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Patients_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_Patients_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectHospitalDBModel.FK_Adminstration_Users" />
         <EntityTypeShape EntityType="ProjectHospitalDBModel.BiomaterialResearch" Width="1.5" PointX="5.25" PointY="11.5" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" />
         <AssociationConnector Association="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" />
+        <EntityTypeShape EntityType="ProjectHospitalDBModel.Adminstrations" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="ProjectHospitalDBModel.AnalysisReport" Width="1.5" PointX="7.5" PointY="11.25" />
+        <AssociationConnector Association="ProjectHospitalDBModel.FK_Adminstration_Users1" />
+        <AssociationConnector Association="ProjectHospitalDBModel.FK_AnalysisReport_BiomaterialResearch" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,12 @@ namespace BioHimicHospital.Model
     
     public partial class BiomaterialResearch
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BiomaterialResearch()
+        {
+            this.AnalysisReport = new HashSet<AnalysisReport>();
+        }
+    
         public int IdBiomaterialResearch { get; set; }
         public int IdPatient { get; set; }
         public int IdLaboraotryService { get; set; }
@@ -21,5 +27,7 @@ namespace BioHimicHospital.Model
     
         public virtual LaboratoryServices LaboratoryServices { get; set; }
         public virtual Patients Patients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnalysisReport> AnalysisReport { get; set; }
     }
 }

@@ -15,7 +15,7 @@
 
             <TextBlock Text="Кем вы хотите зарегистрироваться?" Style="{StaticResource MainTextBlock}" HorizontalAlignment="Center"/>
 
-            <UniformGrid Columns="3" Margin="0 30 0 0">
+            <UniformGrid Columns="4" Margin="0 30 0 0">
                 <Button x:Name="Accountant" 
                     Style="{StaticResource MainButtonStyle}" 
                     Content="Бухгалтер" Click="AccountantButton_Click"
@@ -33,6 +33,13 @@
                 <Button x:Name="Patient" 
                     Style="{StaticResource MainButtonStyle}" 
                     Content="Пациент" Click="PatientButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                <Button x:Name="Adminstration" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Админ" Click="AdminstrationButton_Click"
                     Width="200"
                     Height="30"
                     Margin="10 10 10 10"/>

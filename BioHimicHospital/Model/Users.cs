@@ -20,7 +20,7 @@ namespace BioHimicHospital.Model
             this.Accountants = new HashSet<Accountants>();
             this.LaboratoryAssistants = new HashSet<LaboratoryAssistants>();
             this.Patients = new HashSet<Patients>();
-            this.Adminstration = new HashSet<Adminstration>();
+            this.Adminstrations = new HashSet<Adminstrations>();
         }
     
         public string Login { get; set; }
@@ -33,6 +33,6 @@ namespace BioHimicHospital.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patients> Patients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Adminstration> Adminstration { get; set; }
+        public virtual ICollection<Adminstrations> Adminstrations { get; set; }
     }
 }

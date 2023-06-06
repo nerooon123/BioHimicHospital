@@ -29,7 +29,6 @@ namespace BioHimicHospital.Model
     
         public virtual DbSet<Accountants> Accountants { get; set; }
         public virtual DbSet<AccountantServices> AccountantServices { get; set; }
-        public virtual DbSet<Adminstration> Adminstration { get; set; }
         public virtual DbSet<InsuranceCompany> InsuranceCompany { get; set; }
         public virtual DbSet<LaboratoryAssistants> LaboratoryAssistants { get; set; }
         public virtual DbSet<LaboratoryServices> LaboratoryServices { get; set; }
@@ -38,6 +37,8 @@ namespace BioHimicHospital.Model
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<BiomaterialResearch> BiomaterialResearch { get; set; }
+        public virtual DbSet<Adminstrations> Adminstrations { get; set; }
+        public virtual DbSet<AnalysisReport> AnalysisReport { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

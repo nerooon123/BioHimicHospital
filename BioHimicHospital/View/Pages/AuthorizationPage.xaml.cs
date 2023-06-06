@@ -55,7 +55,7 @@ namespace BioHimicHospital.View.Pages
                             x => x.Login == authUser.Login
                             ).FirstOrDefault();
 
-                            var userAdmin = db.context.Adminstration.Where(
+                            var userAdmin = db.context.Adminstrations.Where(
                             x => x.Login == authUser.Login
                             ).FirstOrDefault();
 

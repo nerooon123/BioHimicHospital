@@ -41,5 +41,10 @@ namespace BioHimicHospital.View.Pages
         {
             this.NavigationService.Navigate(new AccountantRegistrationPage());
         }
+
+        private void AdminstrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AdminstrationRegistrationPage());
+        }
     }
 }

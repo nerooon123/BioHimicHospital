@@ -12,11 +12,17 @@ namespace BioHimicHospital.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Adminstration
+    public partial class AnalysisReport
     {
-        public int IdAdminstration { get; set; }
-        public string Login { get; set; }
+        public int IdAnalysisReport { get; set; }
+        public int IdBiomaterialResearch { get; set; }
+        public string BloodGlucoseLevel { get; set; }
+        public string CholesterolLevels { get; set; }
+        public string ThePresenceOfProteinsInTheUrine { get; set; }
+        public byte[] Electrocardiography { get; set; }
+        public byte[] UltrasoundExamination { get; set; }
+        public byte[] ComputedTomography { get; set; }
     
-        public virtual Users Users { get; set; }
+        public virtual BiomaterialResearch BiomaterialResearch { get; set; }
     }
 }
