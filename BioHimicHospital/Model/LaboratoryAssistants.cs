@@ -19,10 +19,10 @@ namespace BioHimicHospital.Model
         public string FirstName { get; set; }
         public string Patronymic { get; set; }
         public int IdLaboratoryService { get; set; }
-        public Nullable<System.DateTime> EntryDate { get; set; }
         public Nullable<int> Salary { get; set; }
         public Nullable<int> Ward { get; set; }
         public string Login { get; set; }
+        public string EntryData { get; set; }
     
         public virtual LaboratoryServices LaboratoryServices { get; set; }
         public virtual Users Users { get; set; }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BioHimicHospital.Controllers
 {
-    internal class AdminstrationController
+    public class AdminstrationController
     {
+
     }
 }

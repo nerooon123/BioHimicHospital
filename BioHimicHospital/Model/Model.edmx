@@ -14,7 +14,7 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="IdAccountantService" Type="int" Nullable="false" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryData" Type="nvarchar" MaxLength="100" />
           <Property Name="Salary" Type="int" />
           <Property Name="Ward" Type="int" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -74,7 +74,7 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="IdLaboratoryService" Type="int" Nullable="false" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryData" Type="nvarchar" MaxLength="100" />
           <Property Name="Salary" Type="int" />
           <Property Name="Ward" Type="int" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -381,12 +381,12 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdAccountantService" Type="Int32" Nullable="false" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
           <Property Name="Salary" Type="Int32" />
           <Property Name="Ward" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AccountantServices" Relationship="Self.FK_Accountants_AccountantServices" FromRole="Accountants" ToRole="AccountantServices" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Accountants_Users" FromRole="Accountants" ToRole="Users" />
+          <Property Name="EntryData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AccountantServices">
           <Key>
@@ -416,12 +416,12 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdLaboratoryService" Type="Int32" Nullable="false" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
           <Property Name="Salary" Type="Int32" />
           <Property Name="Ward" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="LaboratoryServices" Relationship="Self.FK_LaboratoryAssistants_LaboratoryServices" FromRole="LaboratoryAssistants" ToRole="LaboratoryServices" />
           <NavigationProperty Name="Users" Relationship="Self.FK_LaboratoryAssistants_Users" FromRole="LaboratoryAssistants" ToRole="Users" />
+          <Property Name="EntryData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LaboratoryServices">
           <Key>
@@ -778,12 +778,12 @@
           <EntitySetMapping Name="Accountants">
             <EntityTypeMapping TypeName="ProjectHospitalDBModel.Accountants">
               <MappingFragment StoreEntitySet="Accountants">
+                <ScalarProperty Name="EntryData" ColumnName="EntryData" />
                 <ScalarProperty Name="IdAccountant" ColumnName="IdAccountant" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="IdAccountantService" ColumnName="IdAccountantService" />
-                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Ward" ColumnName="Ward" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -812,12 +812,12 @@
           <EntitySetMapping Name="LaboratoryAssistants">
             <EntityTypeMapping TypeName="ProjectHospitalDBModel.LaboratoryAssistants">
               <MappingFragment StoreEntitySet="LaboratoryAssistants">
+                <ScalarProperty Name="EntryData" ColumnName="EntryData" />
+                <ScalarProperty Name="IdLaboratoryService" ColumnName="IdLaboratoryService" />
                 <ScalarProperty Name="IdLaboratoryAssistant" ColumnName="IdLaboratoryAssistant" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="IdLaboratoryService" ColumnName="IdLaboratoryService" />
-                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Ward" ColumnName="Ward" />
                 <ScalarProperty Name="Login" ColumnName="Login" />

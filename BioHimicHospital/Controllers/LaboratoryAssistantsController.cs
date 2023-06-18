@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 namespace BioHimicHospital.Controllers
 {
     
-    public class LaboratoryAssistant
+    public class LaboratoryAssistantsController
     {
+
+        
+        /// <summary>
+        /// ID Биологического Иследование
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static BiomaterialResearch GetBiomateriaResearchId(int id)
         {
             Core db = new Core();

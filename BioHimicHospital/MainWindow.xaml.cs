@@ -26,10 +26,10 @@ namespace BioHimicHospital
         public MainWindow()
         {
             InitializeComponent();
-            // MainFrame.NavigationService.Navigate(new AuthorizationPage());
+            MainFrame.NavigationService.Navigate(new AuthorizationPage());
             // MainFrame.NavigationService.Navigate(new BiomaterialResearchPage());
             // MainFrame.NavigationService.Navigate(new AnalysisReportPage());
-            MainFrame.NavigationService.Navigate(new UsersControlPage());
+            // MainFrame.NavigationService.Navigate(new UsersControlPage());
 
             var timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);

@@ -84,8 +84,8 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\AccountantsController.cs" />
     <Compile Include="Controllers\AdminstrationController.cs" />
-    <Compile Include="Controllers\LaboratoryAssistant.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\LaboratoryAssistantsController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Model\Accountants.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -189,6 +189,9 @@
     <Compile Include="View\Pages\ResourcePages\LaboratoryAssistantPages\BiomaterialResearchPage.xaml.cs">
       <DependentUpon>BiomaterialResearchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\ResourcePages\PatientPages\PatientChatPage.xaml.cs">
+      <DependentUpon>PatientChatPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -261,6 +264,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\ResourcePages\PatientPages\PatientChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -310,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModel\" />
+    <Folder Include="View\Pages\ResourcePages\AccountantPages\" />
     <Folder Include="View\Windows\" />
   </ItemGroup>
   <ItemGroup>

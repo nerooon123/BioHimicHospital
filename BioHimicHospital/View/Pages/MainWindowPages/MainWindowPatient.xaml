@@ -9,6 +9,63 @@
       Title="MainWindowPatient">
 
     <Grid>
-        <TextBlock Text="Patient"/>
+        <StackPanel VerticalAlignment="Center" Margin="10 0 10 0">
+            <GroupBox Header="Пациент" HorizontalAlignment="Center" Foreground="#fff">
+                <UniformGrid Columns="2">
+                    <Button x:Name="NewAnalysisButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Заказать анализ" Click="NewAnalysisButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                    <Button x:Name="OnlineChatButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Онлайн чат" Click="OnlineChatButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+                </UniformGrid>
+            </GroupBox>
+            <GroupBox Header="Информация о вас">
+                <UniformGrid Columns="2">
+                    <TextBlock Text="Имя: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="FirstName" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    
+                    <TextBlock Text="Фамилия: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="LastName" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    
+                    <TextBlock Text="Отчество: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="Patronymic" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    
+                    <TextBlock Text="Дата рождения: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="DateOfBirthday" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Серия и номер пасспорта: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="SeriesAndNumberPassport" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Номер телефона: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="NumberPhone" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Почта: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="Email" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Полис: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="PolicyNumber" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Страховая компания: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="IdInsuranceCompany" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="ID заказа: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="IdOrder" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Логин: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="Login" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+
+                    <TextBlock Text="Пароль: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="Password" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+            </GroupBox>
+        </StackPanel>
     </Grid>
 </Page>

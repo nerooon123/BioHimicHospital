@@ -77,7 +77,7 @@ namespace BioHimicHospital.View.Pages
                             }
                             if (userPatient != null)
                             {
-                                this.NavigationService.Navigate(new MainWindowPatient());
+                                this.NavigationService.Navigate(new MainWindowPatient(userPatient));
                             }
                             if (userAccountant != null)
                             {
