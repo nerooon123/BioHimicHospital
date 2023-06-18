@@ -9,6 +9,35 @@
       Title="MainWindowAdminstartion">
 
     <Grid>
-        <TextBlock Text="ADMIN"/>
+        <StackPanel VerticalAlignment="Center">
+            <GroupBox Header="Кнопки всех пользователей" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <UniformGrid Columns="2">
+                    <Button x:Name="Analysis" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Анализы" Click="AnalysisButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                    <Button x:Name="BiomaterialResearch" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Исследование биоматериалов" Click="BiomaterialResearchButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+                </UniformGrid>
+            </GroupBox>
+
+            <GroupBox Header="Админ панель" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <UniformGrid Columns="2">
+                    <Button x:Name="AllUsersButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Все пользователи" Click="AllUsersButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+                </UniformGrid>
+            </GroupBox>
+        </StackPanel>
     </Grid>
 </Page>
