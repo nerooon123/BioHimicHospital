@@ -1,0 +1,61 @@
+﻿<Page x:Class="BioHimicHospital.View.Pages.ResourcePages.AddAnalysisReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BioHimicHospital.View.Pages.ResourcePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddAnalysisReportPage">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <UniformGrid Columns="2" 
+                         VerticalAlignment="Center" 
+                         HorizontalAlignment="Center">
+                <TextBlock Text="Бихимическое иследование: " Style="{StaticResource MainTextBlock}" />
+
+                <ComboBox x:Name="IdBiomaterialResearchComboBox" Padding="10"
+                        Margin="1 10 0 10"/>
+
+                <TextBlock Text="Глюкозы в крови:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="BloodGlucoseLevel"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="Уровень холестерина:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="CholesterolLevels"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="Наличие протеинов в моче:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="ThePresenceOfProteinsInTheUrine"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+                <TextBlock Text="ЭКГ:" Style="{StaticResource MainTextBlock}" />
+                <Button x:Name="EKG" Style="{StaticResource MainButtonStyle}" Content="ЭКГ" Margin="1 10 0 10" Click="EKGUploadButton_Click"/>
+
+                <TextBlock Text="УЗИ:" Style="{StaticResource MainTextBlock}" />
+                <Button x:Name="UZI" Style="{StaticResource MainButtonStyle}" Content="УЗИ" Margin="1 10 0 10" Click="UZIUploadButton_Click"/>
+
+                <TextBlock Text="КТ-скан:" Style="{StaticResource MainTextBlock}" />
+                <Button x:Name="KTScan" Style="{StaticResource MainButtonStyle}" Content="КТ-скан" Margin="1 10 0 10" Click="KTScanUploadButton_Click"/>
+
+
+            </UniformGrid>
+            <Button x:Name="AddButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Добавить новые анализы" 
+                    Click="AddButton_Click"
+                    Height="40"
+                    Width="600"/>
+        </StackPanel>
+    </Grid>
+</Page>

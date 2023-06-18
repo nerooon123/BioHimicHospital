@@ -1,0 +1,46 @@
+﻿<Page x:Class="BioHimicHospital.View.Pages.ResourcePages.LaboratoryAssistantPages.AddBiomaterialResearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BioHimicHospital.View.Pages.ResourcePages.LaboratoryAssistantPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddBiomaterialResearchPage">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <UniformGrid Columns="2" 
+                         VerticalAlignment="Center" 
+                         HorizontalAlignment="Center"
+                         Width="600">
+                <TextBlock Text="Пациент: " Style="{StaticResource MainTextBlock}" />
+
+                <ComboBox x:Name="PatientComboBox" Padding="10"
+                        Margin="1 10 0 10"/>
+
+                <TextBlock Text="Услуга:" Style="{StaticResource MainTextBlock}" />
+
+                <ComboBox x:Name="LabServicesComboBox" Padding="10"
+                        Margin="1 10 0 10"/>
+
+                <TextBlock Text="Стоимость:" Style="{StaticResource MainTextBlock}" />
+
+                <TextBox x:Name="CostTextBox"
+                     Style="{StaticResource MainTextBoxStyle}"
+                     Padding="10"
+                     Margin="1 10 0 10"/>
+
+
+
+
+            </UniformGrid>
+            <Button x:Name="PlaceAnOrderButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Оформить заказ" 
+                    Click="PlaceAnOrderButton_Click"
+                    Height="40"
+                    Width="600"/>
+        </StackPanel>
+    </Grid>
+</Page>

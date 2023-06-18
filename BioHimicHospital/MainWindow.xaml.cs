@@ -1,4 +1,5 @@
 ﻿using BioHimicHospital.View.Pages;
+using BioHimicHospital.View.Pages.ResourcePages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace BioHimicHospital
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new AuthorizationPage());
+            // MainFrame.NavigationService.Navigate(new AuthorizationPage());
+            MainFrame.NavigationService.Navigate(new BiomaterialResearchPage());
+            // MainFrame.NavigationService.Navigate(new AnalysisReportPage());
 
             var timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);

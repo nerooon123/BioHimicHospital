@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="IdAnalysisReport" />
           </Key>
-          <Property Name="IdAnalysisReport" Type="int" Nullable="false" />
+          <Property Name="IdAnalysisReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdBiomaterialResearch" Type="int" Nullable="false" />
           <Property Name="BloodGlucoseLevel" Type="nvarchar" MaxLength="250" />
           <Property Name="CholesterolLevels" Type="nvarchar" MaxLength="250" />
