@@ -1,7 +1,10 @@
 ﻿using BioHimicHospital.Model;
+using Microsoft.Win32;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,44 +32,47 @@ namespace BioHimicHospital.View.Pages.ResourcePages.AccountantPages
             UsersDataGrid.ItemsSource = db.context.Accountants.ToList();
         }
 
-        private void AnalysisDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            try
-            {
-                // Get the edited value from the EditingElement
-                var textBox = e.EditingElement as TextBox;
-                var newValue = textBox.Text;
-
-                // Get the object being edited
-                var item = e.Row.Item as LaboratoryAssistants;
-
-                // Update the corresponding property
-                if (e.Column.Header.ToString() == "Фамилия")
-                    item.FirstName = newValue;
-                else if (e.Column.Header.ToString() == "Имя")
-                    item.LastName = newValue;
-                else if (e.Column.Header.ToString() == "Отчество")
-                    item.Patronymic = newValue;
-                else if (e.Column.Header.ToString() == "Зарплата")
-                    item.Salary = Convert.ToInt32(newValue);
-
-                db.context.SaveChanges();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-                return;
-            }
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void excel_Click(object sender, RoutedEventArgs e)
         {
+            using (var excelPackage = new ExcelPackage())
+            {
+                var data = db.context.LaboratoryAssistants.ToList();
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Отчет о работниках");
 
+                // добавляем заголовки таблицы
+                worksheet.Cells[1, 1].Value = "Фамилия";
+                worksheet.Cells[1, 2].Value = "Имя";
+                worksheet.Cells[1, 3].Value = "Отчество";
+                worksheet.Cells[1, 4].Value = "Зарплата";
+                // ...
+
+                // заполняем таблицу данными
+                int row = 2;
+                foreach (var item in data)
+                {
+                    worksheet.Cells[row, 1].Value = item.LastName;
+                    worksheet.Cells[row, 2].Value = item.FirstName;
+                    worksheet.Cells[row, 3].Value = item.Patronymic;
+                    worksheet.Cells[row, 4].Value = item.Salary;
+                    // ...
+
+                    row++;
+                }
+
+                // сохраняем файл на диск
+
+                // Сохраняем документ Excel
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    // Сохраняем документ Excel в выбранное место
+                    File.WriteAllBytes(saveFileDialog.FileName, excelPackage.GetAsByteArray());
+                }
+
+                // Очищаем пакет Excel
+                excelPackage.Dispose();
+            }
         }
 
         private void word_Click(object sender, RoutedEventArgs e)

@@ -22,7 +22,7 @@
             <Button x:Name="word" Style="{StaticResource MainButtonStyle}" Content="Отчет в Word" Height="30" Margin="10 10 10 10" Click="word_Click"/>
         </UniformGrid>
 
-        <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="false" Margin="10,10,10,10" Grid.Row="1" CellEditEnding="AnalysisDataGrid_CellEditEnding" ColumnWidth="*">
+        <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="false" Margin="10,10,10,10" Grid.Row="1" ColumnWidth="*" IsReadOnly="True">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
