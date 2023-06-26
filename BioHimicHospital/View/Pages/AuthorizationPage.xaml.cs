@@ -69,11 +69,11 @@ namespace BioHimicHospital.View.Pages
 
                             if (userLaborant != null)
                             {
-                                this.NavigationService.Navigate(new MainWindowLaboratoryAssistant());
+                                this.NavigationService.Navigate(new MainWindowLaboratoryAssistant(userLaborant));
                             }
                             if (userAdmin != null)
                             {
-                                this.NavigationService.Navigate(new MainWindowAdminstartion());
+                                this.NavigationService.Navigate(new MainWindowAdminstartion(userAdmin));
                             }
                             if (userPatient != null)
                             {
@@ -81,7 +81,7 @@ namespace BioHimicHospital.View.Pages
                             }
                             if (userAccountant != null)
                             {
-                                this.NavigationService.Navigate(new MainWindowAccountant());
+                                this.NavigationService.Navigate(new MainWindowAccountant(userAccountant));
                             }
                         }
                     }

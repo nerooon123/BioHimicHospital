@@ -1,4 +1,5 @@
-﻿using BioHimicHospital.View.Pages.ResourcePages;
+﻿using BioHimicHospital.Model;
+using BioHimicHospital.View.Pages.ResourcePages;
 using BioHimicHospital.View.Pages.ResourcePages.AdminstartionPages;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,13 @@ namespace BioHimicHospital.View.Pages.MainWindowPages
     /// </summary>
     public partial class MainWindowAdminstartion : Page
     {
-        public MainWindowAdminstartion()
+        public MainWindowAdminstartion(Adminstrations userAdmin)
         {
             InitializeComponent();
+
+            LoginTextBlock.Text = userAdmin.Login;
+            PasswordTextBlock.Text = userAdmin.Users.Password;
+
         }
 
         private void AnalysisButton_Click(object sender, RoutedEventArgs e)

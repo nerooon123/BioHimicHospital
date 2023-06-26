@@ -23,7 +23,7 @@ namespace BioHimicHospital.Model
         public int IdBiomaterialResearch { get; set; }
         public int IdPatient { get; set; }
         public int IdLaboraotryService { get; set; }
-        public int Cost { get; set; }
+        public string Price { get; set; }
     
         public virtual LaboratoryServices LaboratoryServices { get; set; }
         public virtual Patients Patients { get; set; }

@@ -47,7 +47,7 @@ namespace BioHimicHospital.View.Pages.ResourcePages
                 var result = db.context.BiomaterialResearch.Where(p => p.IdBiomaterialResearch.ToString().Contains(searchText)
                     || p.Patients.FirstName.ToString().Contains(searchText)
                     || p.LaboratoryServices.NameLaboratoryService.ToString().Contains(searchText)
-                    || p.Cost.ToString().Contains(searchText)).ToList();
+                    || p.Price.ToString().Contains(searchText)).ToList();
 
                 var biores = new ObservableCollection<BiomaterialResearch>(result);
                 BomaterialResearchGrid.ItemsSource = biores;
@@ -101,7 +101,7 @@ namespace BioHimicHospital.View.Pages.ResourcePages
 
                 // Update the corresponding property
                 if (e.Column.Header.ToString() == "Стоимость")
-                    item.Cost = Convert.ToInt32(newValue);
+                    item.Price = newValue;
 
 
                 db.context.SaveChanges();
@@ -134,7 +134,7 @@ namespace BioHimicHospital.View.Pages.ResourcePages
                     worksheet.Cells[row, 1].Value = item.IdBiomaterialResearch;
                     worksheet.Cells[row, 2].Value = item.Patients.FirstName;
                     worksheet.Cells[row, 3].Value = item.LaboratoryServices.NameLaboratoryService;
-                    worksheet.Cells[row, 4].Value = item.Cost;
+                    worksheet.Cells[row, 4].Value = item.Price;
                     // ...
 
                     row++;

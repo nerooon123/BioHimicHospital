@@ -30,7 +30,7 @@
                 <DataGridTextColumn Header="ID биохического иследование"  Binding="{Binding IdBiomaterialResearch}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Пациент"  Binding="{Binding Patients.FirstName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Услуга"  Binding="{Binding LaboratoryServices.NameLaboratoryService}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Стоимость"  Binding="{Binding Cost}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Стоимость"  Binding="{Binding Price}" IsReadOnly="False"/>
 
                 <DataGridTemplateColumn Header="Действия">
 

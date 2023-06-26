@@ -23,25 +23,30 @@ namespace BioHimicHospital.View.Pages.MainWindowPages
     public partial class MainWindowLaboratoryAssistant : Page
     {
         Core db = new Core();
-        public MainWindowLaboratoryAssistant()
+        public MainWindowLaboratoryAssistant(LaboratoryAssistants userLaborant)
         {
             InitializeComponent();
-            try
-            {
-                // Создаем новую запись в таблице
-                var newItem = new LaboratoryAssistants
-                {
-                    EntryData = Convert.ToString(DateTime.Now) // Записываем текущее время
-                };
-                // Добавляем запись в таблицу и сохраняем изменения в базе данных
-                db.context.LaboratoryAssistants.Add(newItem);
-                db.context.SaveChanges();
 
-            }
-            catch
-            {
-                MessageBox.Show("Критический сбор в работе приложения:", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            FirstNameTextBlock.Text = userLaborant.FirstName;
+            LastNameTextBlock.Text = userLaborant.LastName;
+            PatronymicTextBlock.Text = userLaborant.Patronymic;
+
+            //try
+            //{
+            //    // Создаем новую запись в таблице
+            //    var newItem = new LaboratoryAssistants
+            //    {
+            //        EntryData = Convert.ToString(DateTime.Now) // Записываем текущее время
+            //    };
+            //    // Добавляем запись в таблицу и сохраняем изменения в базе данных
+            //    db.context.LaboratoryAssistants.Add(newItem);
+            //    db.context.SaveChanges();
+
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Критический сбор в работе приложения:", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //}
         }
 
         private void AnalysisButton_Click(object sender, RoutedEventArgs e)

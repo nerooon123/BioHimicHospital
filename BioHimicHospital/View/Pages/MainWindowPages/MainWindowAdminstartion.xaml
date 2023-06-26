@@ -9,7 +9,27 @@
       Title="MainWindowAdminstartion">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="Информация о пользователе" Foreground="#fff">
+            <UniformGrid Columns="2">
+                <UniformGrid Columns="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Логин: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="LoginTextBlock" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Пароль: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="PasswordTextBlock" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+            </UniformGrid>
+        </GroupBox>
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="1">
             <GroupBox Header="Кнопки всех пользователей" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <UniformGrid Columns="2">
                     <Button x:Name="Analysis" 

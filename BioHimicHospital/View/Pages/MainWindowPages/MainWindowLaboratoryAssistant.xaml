@@ -9,9 +9,33 @@
       Title="MainWindowLaboratoryAssistant">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Информация о пользователе" Foreground="#fff">
+            <UniformGrid Columns="3">
+                <UniformGrid Columns="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Имя: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="LastNameTextBlock" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Фамилия: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="FirstNameTextBlock" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Отчество: " Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                    <TextBlock x:Name="PatronymicTextBlock" Style="{StaticResource MainTextBlock}" Foreground="#fff"/>
+                </UniformGrid>
+            </UniformGrid>
+        </GroupBox>
+        
+        
         <StackPanel  VerticalAlignment="Center" 
                      HorizontalAlignment="Center"
-                     >
+                     Grid.Row="1">
 
             <UniformGrid Columns="2">
                 <Button x:Name="Analysis" 

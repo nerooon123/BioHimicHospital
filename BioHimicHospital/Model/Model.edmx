@@ -54,7 +54,7 @@
           <Property Name="IdBiomaterialResearch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPatient" Type="int" Nullable="false" />
           <Property Name="IdLaboraotryService" Type="int" Nullable="false" />
-          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="InsuranceCompany">
           <Key>
@@ -191,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BiomaterialResearch_Patients">
+        <Association Name="FK_BiomaterialResearch_Patients1">
           <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
           <End Role="BiomaterialResearch" Type="Self.BiomaterialResearch" Multiplicity="*" />
           <ReferentialConstraint>
@@ -339,7 +339,7 @@
             <End Role="LaboratoryServices" EntitySet="LaboratoryServices" />
             <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
           </AssociationSet>
-          <AssociationSet Name="FK_BiomaterialResearch_Patients" Association="Self.FK_BiomaterialResearch_Patients">
+          <AssociationSet Name="FK_BiomaterialResearch_Patients1" Association="Self.FK_BiomaterialResearch_Patients1">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="BiomaterialResearch" EntitySet="BiomaterialResearch" />
           </AssociationSet>
@@ -694,10 +694,10 @@
           <Property Name="IdBiomaterialResearch" Type="Int32" Nullable="false" />
           <Property Name="IdPatient" Type="Int32" Nullable="false" />
           <Property Name="IdLaboraotryService" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LaboratoryServices" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_LaboratoryServices" FromRole="BiomaterialResearch" ToRole="LaboratoryServices" />
           <NavigationProperty Name="Patients" Relationship="ProjectHospitalDBModel.FK_BiomaterialResearch_Patients" FromRole="BiomaterialResearch" ToRole="Patients" />
           <NavigationProperty Name="AnalysisReport" Relationship="ProjectHospitalDBModel.FK_AnalysisReport_BiomaterialResearch" FromRole="BiomaterialResearch" ToRole="AnalysisReport" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_BiomaterialResearch_LaboratoryServices">
           <End Type="ProjectHospitalDBModel.LaboratoryServices" Role="LaboratoryServices" Multiplicity="1" />
@@ -908,7 +908,7 @@
           <EntitySetMapping Name="BiomaterialResearch">
             <EntityTypeMapping TypeName="ProjectHospitalDBModel.BiomaterialResearch">
               <MappingFragment StoreEntitySet="BiomaterialResearch">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="IdLaboraotryService" ColumnName="IdLaboraotryService" />
                 <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
                 <ScalarProperty Name="IdBiomaterialResearch" ColumnName="IdBiomaterialResearch" />

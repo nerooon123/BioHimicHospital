@@ -1,4 +1,5 @@
 ﻿using BioHimicHospital.Model;
+using BioHimicHospital.View.Pages.ResourcePages.AccountantPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,19 @@ namespace BioHimicHospital.View.Pages.MainWindowPages
     /// </summary>
     public partial class MainWindowAccountant : Page
     {
-        Core db = new Core();
-        public MainWindowAccountant()
+        
+        public MainWindowAccountant(Accountants userAccountant)
         {
             InitializeComponent();
+            
+            FirstNameTextBlock.Text = userAccountant.FirstName;
+            LastNameTextBlock.Text = userAccountant.LastName;
+            PatronymicTextBlock.Text = userAccountant.Patronymic;
         }
 
-        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        private void WorkesButtom_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new WorkersPage());
         }
     }
 }

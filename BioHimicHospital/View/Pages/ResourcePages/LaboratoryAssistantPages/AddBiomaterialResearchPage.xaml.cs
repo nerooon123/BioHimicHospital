@@ -28,7 +28,7 @@ namespace BioHimicHospital.View.Pages.ResourcePages.LaboratoryAssistantPages
 
             // заполнение комбобокса пациента
             PatientComboBox.ItemsSource = db.context.Patients.ToList();
-            PatientComboBox.DisplayMemberPath = "FirstName";
+            PatientComboBox.DisplayMemberPath = "IdPatient";
 
             LabServicesComboBox.ItemsSource = db.context.LaboratoryServices.ToList();
             LabServicesComboBox.DisplayMemberPath = "NameLaboratoryService";
@@ -44,9 +44,13 @@ namespace BioHimicHospital.View.Pages.ResourcePages.LaboratoryAssistantPages
                 {
                     BiomaterialResearch newBiomaterialResearch = new BiomaterialResearch()
                     {
+                        
+                        IdLaboraotryService = LabServicesComboBox.SelectedIndex,
+
                         IdPatient = 1 + PatientComboBox.SelectedIndex,
-                        IdLaboraotryService = 1 + LabServicesComboBox.SelectedIndex,
-                        Cost = Convert.ToInt32(CostTextBox.Text)
+
+                        Price = CostTextBox.Text
+
                     };
 
                     db.context.BiomaterialResearch.Add(newBiomaterialResearch);
