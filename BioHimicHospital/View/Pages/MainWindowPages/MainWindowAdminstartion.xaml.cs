@@ -1,6 +1,8 @@
 ﻿using BioHimicHospital.Model;
 using BioHimicHospital.View.Pages.ResourcePages;
+using BioHimicHospital.View.Pages.ResourcePages.AccountantPages;
 using BioHimicHospital.View.Pages.ResourcePages.AdminstartionPages;
+using BioHimicHospital.View.Pages.ResourcePages.LaboratoryAssistantPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +47,21 @@ namespace BioHimicHospital.View.Pages.MainWindowPages
         private void AllUsersButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new UsersControlPage());
+        }
+
+        private void AddAnalysisButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AddAnalysisReportPage());
+        }
+
+        private void AddBiomaterialResearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AddBiomaterialResearchPage());
+        }
+
+        private void WorkersButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new WorkersPage());
         }
     }
 }

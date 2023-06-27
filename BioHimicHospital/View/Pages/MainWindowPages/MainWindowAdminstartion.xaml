@@ -30,7 +30,7 @@
         </GroupBox>
 
         <StackPanel VerticalAlignment="Center" Grid.Row="1">
-            <GroupBox Header="Кнопки всех пользователей" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <GroupBox Header="Кнопки всех пользователей" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff">
                 <UniformGrid Columns="2">
                     <Button x:Name="Analysis" 
                     Style="{StaticResource MainButtonStyle}" 
@@ -45,10 +45,32 @@
                     Width="200"
                     Height="30"
                     Margin="10 10 10 10"/>
+
+                    <Button x:Name="AddAnalysis" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Добавить анализы" Click="AddAnalysisButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                    <Button x:Name="AddBiomaterialResearch" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Добавить исследование биом." Click="AddBiomaterialResearchButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
+                    <Button x:Name="WorkersButton" 
+                    Style="{StaticResource MainButtonStyle}" 
+                    Content="Работники" Click="WorkersButton_Click"
+                    Width="200"
+                    Height="30"
+                    Margin="10 10 10 10"/>
+
                 </UniformGrid>
             </GroupBox>
 
-            <GroupBox Header="Админ панель" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <GroupBox Header="Админ панель" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff">
                 <UniformGrid Columns="2">
                     <Button x:Name="AllUsersButton" 
                     Style="{StaticResource MainButtonStyle}" 
