@@ -31,21 +31,21 @@
                 <DataGridTextColumn Header="Глюкозы в крови" Binding="{Binding BloodGlucoseLevel}"/>
                 <DataGridTextColumn Header="Уровень холестерина" Binding="{Binding CholesterolLevels}"/>
                 <DataGridTextColumn Header="Наличие протеинов в моче" Binding="{Binding ThePresenceOfProteinsInTheUrine}"/>
-                <DataGridTemplateColumn Header="ЕКГ" Width="SizeToCells">
+                <DataGridTemplateColumn Header="ЕКГ" Width="SizeToCells" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Electrocardiography}" Width="100" Height="100"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn> 
-                <DataGridTemplateColumn Header="УЗИ" Width="SizeToCells">
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="УЗИ" Width="SizeToCells" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding UltrasoundExamination}" Width="100" Height="100"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn> 
-                <DataGridTemplateColumn Header="УЗИ" Width="SizeToCells">
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="КТ" Width="SizeToCells" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding ComputedTomography}" Width="100" Height="100"/>
